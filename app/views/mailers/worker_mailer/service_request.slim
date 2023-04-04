@@ -1,0 +1,68 @@
+.container
+  .text-content
+    .text-properties
+      #name-user = t(".hello", name: "#{@worker[:name].split(/([^\s]+)/)[1]}")
+      br
+      img.img src="#{ENV['MAILER_ASSETS_HOST']}/proposal.jpeg"
+      br
+      #text-body = t(".description", title: @service.title)
+      br
+      br
+      #text-data-bank = t(".tip")
+      br
+      br
+      .center-button
+        a href="#{@url}" target="_blank" Acessar serviço
+      br
+      br
+      #text-body = t('.thanks')
+
+css:
+  .container{
+    width: 100%;
+  }
+  .text-content{
+    background-color: white;
+    text-align: left;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .text-properties{
+    font-size: 16px !important;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align:left;
+    margin: 0 25px;
+  }
+  #name-user{
+    color: #333333;
+    font-size: 30px;
+  }
+  #text-body{
+    color: #333333;
+  }
+  #text-body a {
+    color: #333333
+  }
+  #text-data-bank{
+    color: #333333;
+  }
+  .center-button a{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    background: #F76B1C;
+    color: #ffff;
+    text-decoration: none;
+    padding: 15px;
+    max-width: 170px;
+    display: block;
+    margin: 0 auto;
+    font-family: Arial;
+  }
+  .img {
+    width: 100%;
+    height: auto;
+  }

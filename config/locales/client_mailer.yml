@@ -1,0 +1,39 @@
+pt-BR:
+  mailers:
+    client_mailer:
+      confirmation:
+        subject: "Confimação de cadastro"
+        hello: "Olá!"
+        call: "Você está recebendo este email com seu código de confirmação para registro no nosso sistema."
+        token: "Código: %{token}"
+        description: "Volte o sistema e insira o código abaixo no campo solicitado,
+                      para que seja possível a continuidade do seu cadastro."
+        thanks: "Obrigado, caso não tenho solicitado este email, somente ignore-o!"
+      welcome:
+        subject: "Seja bem vindo ao Labute!"
+        welcome: "Seja bem vindo, %{name}!"
+        hello: "Olá, %{name},"
+        message: "Agradecemos por se cadastrar na Labute. A partir de agora você receberá notificações, se houver um serviço para sua(s) categoria(s) cadastrada(s), além de participar de outras promoções."
+        perks: "Pedir e atender um serviço ficou ainda mais fácil com a Labute."
+        steps: "Para começar:"
+        photo: "Adicione uma foto a seu cadastro. É importante para identificação do cliente e do prestador."
+        info: "Verifique suas informações. Informações verdadeiras são obrigatórias para validarmos seu cadastro. É para a sua segurança."
+        explore: "Agora você está cadastrado e pronto para resolver a sua vida! Explore nosso aplicativo e busque o que precisa."
+        contact: "Estamos à sua disposição, se estiver com dúvida ou quiser saber mais sobre parcerias e descontos entre em contato conosco, por meio do e-mail"
+      payment_accepted:
+        subject: "Seu pagamento foi aprovado"
+        hello: "Olá, %{name}"
+        description: "Seu pagamento feito no serviço %{title} foi realizado com sucesso. O serviço está marcado para o dia %{date}."
+        category: "Categoria de serviço: %{category} - %{subcategory}"
+        worker: "Prestador de serviço: %{name}"
+        value: "Valor total do pagamento: R$ %{price}"
+        payment: "Forma de pagamento: Cartão de crédito em %{installments}x"
+        charges: "A taxa de intermediação é de 15%, como acordado em contrato disponível no aplicativo da Labute"
+        thanks: "Obrigado por usar o Labute."
+      payment_rejected:
+        subject: "Seu pagamento foi recusado"
+        hello: "Olá, %{name}"
+        description: "Notamos que você escolheu um orçamento para o serviço %{title} e não efetuou seu pagamento. Você tem até o dia do serviço (%{date}) para efetuá-lo."
+        help: "Quaisquer dúvidas, ficamos à sua disposição para acompanhá-lo no passo-a-passo."
+        contact_us: "Conte conosco. Victor Minaya, CEO Labute - (61) 99401-7280."
+        thanks: "Obrigado por usar o Labute."

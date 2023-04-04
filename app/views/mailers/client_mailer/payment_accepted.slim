@@ -1,0 +1,88 @@
+.container
+  .text-content
+    .text-properties
+      #name-user = t(".hello", name: "#{@client[:name].split(/([^\s]+)/)[1]}")
+      br
+      br
+      #text-body = t(".description", title: @service.title, date: @service.start_date.strftime("%d/%m/%Y"))
+      br
+      br
+      #text-data-bank = t(".category", category: @category.title, subcategory: @subcategory.title)
+      br
+      br
+      .worker
+        img.img src="#{@worker_image}"
+        #text-data-bank = t(".worker", name: @worker.name)
+      br
+      br
+      #text-data-bank = t(".value", price: @price)
+      br
+      br
+      #text-data-bank = t(".payment", installments: @installments)
+      br
+      br
+      #text-data-bank = t(".charges")
+      br
+      br
+      .center-button
+        a href="#{@url}" target="_blank" Acessar Serviço
+      br
+      br
+      #text-body
+        | Caso tenha dúvidas, por gentilza entrar em contato com&ensp;
+        a href='mailto:atendimento@labute.com.br' atendimento@labute.com.br
+        | &ensp;ou (61) 99401-7280. Ficamos a sua disposição para esclarecimentos.
+      br
+      #text-body = t('.thanks')
+
+css:
+  .container{
+    width: 100%;
+  }
+  .text-content{
+    background-color: white;
+    text-align: left;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .text-properties{
+    font-size: 16px !important;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align:left;
+    margin: 0 25px;
+  }
+  #name-user{
+    color: #333333;
+    font-size: 30px;
+  }
+  #text-body{
+    color: #333333;
+  }
+  #text-body a {
+    color: #333333
+  }
+  #text-data-bank{
+    color: #333333;
+  }
+  .center-button a{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    background: #0A3E85;
+    color: #ffff;
+    text-decoration: none;
+    padding: 15px;
+    max-width: 170px;
+    display: block;
+    margin: 0 auto;
+    font-family: Arial;
+  }
+  .img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }

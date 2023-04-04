@@ -1,0 +1,34 @@
+pt-BR:
+  mailers:
+    worker_mailer:
+      confirmation:
+        subject: "Confimação de cadastro"
+        hello: "Olá!"
+        call: "Você está recebendo este email com seu código de confirmação para registro no nosso sistema."
+        token: "Código: %{token}"
+        description: "Volte o sistema e insira o código abaixo no campo solicitado,
+                      para que seja possível a continuidade do seu cadastro."
+        thanks: "Obrigado, caso não tenho solicitado este email, somente ignore-o!"
+      welcome:
+        subject: "Seja bem vindo ao Labute!"
+        welcome: "Seja bem vindo, %{name}!"
+        hello: "Olá, %{name},"
+        message: "Agradecemos por se cadastrar na Labute. A partir de agora você receberá notificações, se houver um serviço para sua(s) categoria(s) cadastrada(s), além de participar de outras promoções."
+        perks: "Pedir e atender um serviço ficou ainda mais fácil com a Labute."
+        steps: "Para começar:"
+        photo: "Adicione uma foto a seu cadastro. É importante para identificação do cliente e do prestador."
+        info: "Verifique suas informações. Informações verdadeiras são obrigatórias para validarmos seu cadastro. É para a sua segurança."
+        explore: "Agora você está cadastrado e pronto para resolver a sua vida! Explore nosso aplicativo e busque o que precisa."
+        contact: "Estamos à sua disposição, se estiver com dúvida ou quiser saber mais sobre parcerias e descontos entre em contato conosco, por meio do e-mail"
+      proposal:
+        subject: "Novos serviços na sua área de atuação."
+        hello: "Olá, %{name}!"
+        description: "Você recebeu uma nova solicitação de serviço em sua área. Entre na plataforma e faça uma proposta de orçamento."
+        tip: "Dica: Após ser contratado, use o chat dentro do aplicativo para falar com o cliente sobre o serviço e acertar detalhes."
+        thanks: "Obrigado por usar o labute."
+      service_request:
+        subject: "Recebimento de solicitação exclusiva para prestador"
+        hello: "Olá, %{name}!"
+        description: "Você recebeu uma solicitação exclusiva de um cliente para o serviço %{title}, ou seja, somente você pode ver essa solicitação. Faça sua proposta de orçamento e preste um serviço a quem te conhece."
+        tip: "Dica: Após ser contratado, use o chat dentro do aplicativo para falar com o cliente sobre o serviço e acertar detalhes."
+        thanks: "Obrigado por usar o labute."

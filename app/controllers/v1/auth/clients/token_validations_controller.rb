@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+
+module V1
+  module Auth
+    module Clients
+      class TokenValidationsController < DeviseTokenAuth::TokenValidationsController
+        protected
+
+        def render_validate_token_success
+          render json: {
+            success: true,
+            data: ClientSerializer.new(@resource).serialize
+          }
+        end
+      end
+    end
+  end
+end

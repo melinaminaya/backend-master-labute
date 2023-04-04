@@ -1,0 +1,110 @@
+version: '3.3'
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  gems-data:
+    driver: local
+
+services:
+  base: &base
+    hostname: base
+    ports: []
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - .:/home/app/web
+      - gems-data:/home/app/.gems
+    environment: &env
+      USER_ID: ${UID}
+      REDIS_URL: redis://redis:6379/0
+      SOCKET_URL: 'http://0.0.0.0:5000'
+      S3_BUCKET: 'dev-labute'
+      AWS_REGION: 'us-east-1'
+      AWS_ACCESS_KEY_ID: 'AKIAJZL6TF5KYP575GQA'
+      AWS_SECRET_ACCESS_KEY: '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'
+      EMAIL_FROM: 'atendimento@labute.com.br'
+      # DATABASE_URL: postgres://postgres:ggc1234@db:5432/labute_dev
+      DATABASE_URL: postgresql://postgresql:Yj8CNVMXqZ@labutedatabase.cnydsddwumnb.us-east-1.rds.amazonaws.com:5432/labutedatabase
+      RACK_ENV: development
+      RAILS_ENV: development
+      SECRET_KEY_BASE: 1234
+      WEB_CONCURRENCY: 1
+      MAX_THREADS: 4
+      PORT: 3000
+      FORCE_NOTIFY: null
+      DATABASE_ADAPTER: postgres
+      DATABASE_ENCODING: utf-8
+      DATABASE_POOL: 5
+      DATABASE_TIMEOUT: 5000
+      RAILS_SERVE_STATIC_FILES: null
+      CDN_HOST: 'localhost'
+      MAILER_HOST: 'localhost'
+      RAILS_LOG_TO_STDOUT: 'true'
+      SMTP_ADDRESS: 'localhost'
+      SMTP_PORT: '1025'
+      SMTP_USERNAME: 'ggc'
+      SMTP_PASSWORD: 'ggc@ggclabs.com.br'
+      # homolog
+      WIRECARD_TOKEN: 'ZPEFN3WT4EQ2KSSDXFZ5AWRYD4SBAEVL'
+      WIRECARD_SECRET: 'ARNGPJO3JWN9JGS6IFDB8QZ1V0PXV6DN4KNW2ENQ'
+      # production
+      # WIRECARD_TOKEN: 'VGSVULYGVKH9R1SOTZCTFT55T5RWH810'
+      # WIRECARD_SECRET: 'EUUHXWUPZUFZ58PY1JR6QQFTDRZNIIAB0OZ2NLBT'
+      # FCM_TOKEN: 'AIzaSyCCGSUgVnqSsezo1TmMPEEqvcQDD6lPVZg'
+      FCM_TOKEN: 'AIzaSyCCGSUgVnqSs'
+      CLIENT_APP_PACKAGE: 'org.client.labutera.app'
+      WORKER_APP_PACKAGE: 'org.worker.labutera.app'
+      RECOVER_PASSWORD_MESSAGE: 'Labute - Seu código de confirmação é'
+      PROPOSAL_MESSAGE: 'Você recebeu uma nova proposta de serviço em sua área de atuação. Entre na plataforma e faça sua proposta de orçamento. https://pro.labute.com.br/search'
+      MAILER_ASSETS_HOST: 'https://labute-email-assets.s3.amazonaws.com'
+    depends_on:
+      # - db
+      - redis
+      - mailcatcher
+    stdin_open: true
+    tty: true
+
+  app:
+    <<: *base
+    hostname: app
+    image: labute_backend
+    environment: *env
+    command: bundle exec rails server -p 3000 -b 0.0.0.0
+    ports: ['3000:3000']
+    depends_on:
+      # - db
+      - redis
+      - mailcatcher
+      - sidekiq
+
+  sidekiq:
+    <<: *base
+    hostname: sidekiq
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    environment: *env
+
+  db:
+    hostname: db
+    image: postgres:9.5.10-alpine
+    volumes:
+      - ./db/dumps:/db/dumps
+      - ./tmp:/tmp
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ggc1234
+
+  redis:
+    hostname: redis
+    image: redis:3.2.10-alpine
+    volumes:
+      - redis-data:/var/lib/redis
+    command: redis-server --appendonly yes
+
+  mailcatcher:
+    hostname: mailcatcher
+    image: schickling/mailcatcher
+    ports: ['1080:1080']

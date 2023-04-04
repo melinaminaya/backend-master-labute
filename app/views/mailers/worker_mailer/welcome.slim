@@ -1,0 +1,73 @@
+table border="0" cellpadding="0" cellspacing="0" width="100%"
+  tbody
+    table.devicewidth align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="background: #ffffff; border: 1px solid #D9D9D9"
+      tbody
+        tr
+          td height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;")
+        tr
+          td
+            table.devicewidthinner align="center" border="0" cellpadding="0" cellspacing="0" width="560"
+              tbody
+                tr
+                  td style="font-family: Helvetica, arial, sans-serif; font-size: 32px; font-weight: bold; color: #333333; text-align:left; line-height: 30px;"
+                    p
+                      = t(".welcome", { name: @worker.name })
+                tr
+                  td width="100%"
+                    img alt="" border="0" src="#{ENV['MAILER_ASSETS_HOST']}/slogan.jpeg" style="display:block; border:none; outline:none; text-decoration:none; width: 100%; height: auto;"
+            table.devicewidthinner align="center" border="0" cellpadding="0" cellspacing="0" width="560"
+              tbody
+                tr
+                  td style="font-family: Helvetica, arial, sans-serif; font-size: 20px; color: #333333; text-align:left; line-height: 30px;"
+                    p
+                      = t(".hello", { name: @worker.name })
+                tr
+                  td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #333333; text-align:left; line-height: 30px;"
+                    p
+                      = t(".message")
+                tr
+                  td height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;"
+                tr
+                  td
+                    p style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #333333; text-align:left; line-height: 30px;"
+                      = t('.perks')
+                tr
+                  td
+                    p style="font-family: Helvetica, arial, sans-serif; font-size: 20px; font-weight: bold; color: #333333; text-align:left; line-height: 30px;"
+                      = t('.steps')
+                tr
+                  td
+                    table.devicewidthinner align="center" border="0" cellpadding="0" cellspacing="0" width="560"
+                      tbody
+                        tr
+                          td height="40" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;"
+                        tr
+                          td align="center" style="width: 100px;"
+                            img alt="" border="0" src="#{ENV['MAILER_ASSETS_HOST']}/profile.jpeg" style="display:block; border:none; outline:none; text-decoration:none; width: 75px; height: auto;"
+                          td
+                            p style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #333333; text-align:left; line-height: 30px;"
+                              = t('.photo')
+                        tr
+                          td align="center" style="width: 100px;"
+                            img alt="" border="0" src="#{ENV['MAILER_ASSETS_HOST']}/info.jpeg" style="display:block; border:none; outline:none; text-decoration:none; width: 75px; height: auto;"
+                          td
+                            p style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #333333; text-align:left; line-height: 30px;"
+                              = t('.info')
+                        tr
+                          td align="center" style="width: 100px;"
+                            img alt="" border="0" src="#{ENV['MAILER_ASSETS_HOST']}/ok.jpeg" style="display:block; border:none; outline:none; text-decoration:none; width: 75px; height: auto;"
+                          td
+                            p style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #333333; text-align:left; line-height: 30px;"
+                              = t('.explore')
+                tr
+                  td height="40" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;"
+                tr
+                  td height="40" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;"
+                tr
+                  td
+                    p style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #333333; text-align:left; line-height: 30px;"
+                      = "#{t('.contact')} "
+                      a href="mailto:atendimento@labute.com.br" style="color: black;"
+                        | atendimento@labute.com.br
+                tr
+                  td height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;")

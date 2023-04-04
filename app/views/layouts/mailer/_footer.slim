@@ -1,0 +1,80 @@
+- host = ENV['MAILER_ASSETS_HOST']
+- image_path = "#{host}/footer.jpeg"
+- facebook_path = "#{host}/facebook.jpg"
+- instagram_path = "#{host}/instagram.png"
+- google_path = "#{host}/google-play.png"
+- apple_path = "#{host}/app-store.png"
+
+table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 16px;"
+  tbody
+    tr
+      td
+        .innerbg
+        table.devicewidth align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+          tbody
+            tr
+              td align="center" height="40" style="font-size:1px; line-height:1px;"
+                a href="https://www.facebook.com/labutepro/" target="_blank"style="margin-right: 16px;"
+                  img src="#{facebook_path}" width='50px' height='50px'
+                a href="https://www.instagram.com/labutepro/" target="_blank" style="margin-left: 16px;"
+                  img src="#{instagram_path}" width='50px' height='50px'
+
+table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 16px;"
+  tbody
+    tr
+      td
+        .innerbg
+        table.devicewidth align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+          tbody
+            tr
+              td align="center" height="40" style="font-size:1px; line-height:1px;"
+                a href="https://play.google.com/store/search?q=labute&hl=pt_BR" target="_blank" style="margin-right: 16px;"
+                  img src="#{google_path}" width='250px'
+                a href="https://www.apple.com/br/search/labute?src=serp" target="_blank" style="margin-left: 16px;"
+                  img src="#{apple_path}" width='250px'
+
+table border="0" cellpadding="0" cellspacing="0" width="100%"
+  tbody
+    tr
+      td
+        .innerbg
+        table.devicewidth align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+          tbody
+            tr
+              td width="100%"
+                table.devicewidth align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+                  tbody
+                    tr
+                      td
+                        table.devicewidthinner align="center" border="0" cellpadding="0" cellspacing="0" width="560"
+                          tbody
+                            tr
+                              td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #666666; text-align:left; line-height: 30px;"
+                                p
+                                  strong
+                                    a href="https://labute.com.br" target="_blank" style="color: black;"
+                                      | Labute,
+                                  | &ensp;o app que resolve a sua vida. Todos os serviços que você precisa estão aqui. Labute intermediação de serviços online.
+
+table align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+  tbody
+    tr
+      td align="center"
+        .imgpop
+          a href="https://labute.com.br" target="_blank"
+            img.banner style="display:block; border: none; outline:none; text-decoration:none; width: 100%; height: auto;" alt="" src="#{image_path}" width='600px'
+
+table border="0" cellpadding="0" cellspacing="0" width="100%"
+  tbody
+    tr
+      td
+        .innerbg
+        table.devicewidth align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+          tbody
+            tr
+              td
+                p style="text-align: center; color: #000000; font-size: 14px; font-weight: 900; font-family: Helvetica, Arial, sans-serif; color: black; text-decoration: none;"
+                  small style="font-family: Arial, Helvetica, sans-serif;"
+                    = "Enviado por um candango com ❤ | Copyright © #{Time.new.year} Labute - Desenvolvido por #{link_to('Labute', 'https://labute.com.br', target: '_blank')}".html_safe
+    tr
+      td align="center" height="40" style="font-size:1px; line-height:1px;"

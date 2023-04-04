@@ -1,0 +1,14 @@
+{
+  "name": "labute",
+  "version": "1.0.0",
+  "description": "[![pipeline status](https://gitlab.com/ggclabs/labute/backendbadges/dev/pipeline.svg)](https://gitlab.com/ggclabs/labute/backend/commits/dev) [![coverage report](https://gitlab.com/ggclabs/labute/backendbadges/dev/coverage.svg)](https://gitlab.com/ggclabs/labute/backend/commits/dev)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

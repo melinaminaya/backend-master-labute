@@ -1,0 +1,46 @@
+image: zrpaplicacoes/docker-compose:latest
+
+variables:
+  DOCKER_DRIVER: overlay
+  AWS_ACCOUNT_ID: '543022988140'
+  PROJECT_DEV: labute_api
+  PROJECT_PROD: api_prod
+  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:nightly
+  CLUSTER_DEV: labute-staging
+  CLUSTER_PROD: production
+  BACKEND_SERVICE: api
+  SIDEKIQ_SERVICE: sidekiq
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+  - docker-compose --version
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+  - docker pull $CONTAINER_RELEASE_IMAGE || true
+
+stages:
+  - deploy
+
+deploy-staging:
+  stage: deploy
+  script:
+    - aws ecr get-login --no-include-email --region us-east-1 | ash
+    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_DEV:$CI_COMMIT_SHA .
+    - docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_DEV:$CI_COMMIT_SHA
+    - ecs-deploy -c $CLUSTER_DEV -n $BACKEND_SERVICE -i $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_DEV -e CI_COMMIT_SHA -t 300 --max-definitions 1 --enable-rollback --verbose
+    - ecs-deploy -c $CLUSTER_DEV -n $SIDEKIQ_SERVICE -i $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_DEV -e CI_COMMIT_SHA -t 300 --max-definitions 1 --enable-rollback --verbose
+  only:
+    - dev
+
+deploy-production:
+  stage: deploy
+  script:
+    - aws ecr get-login --no-include-email --region us-east-1 | ash
+    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_PROD:$CI_COMMIT_SHA .
+    - docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_PROD:$CI_COMMIT_SHA
+    - ecs-deploy -c $CLUSTER_PROD -n $BACKEND_SERVICE -i $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_PROD -e CI_COMMIT_SHA -t 600 --max-definitions 3 --enable-rollback --verbose
+    - ecs-deploy -c $CLUSTER_PROD -n $SIDEKIQ_SERVICE -i $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$PROJECT_PROD -e CI_COMMIT_SHA -t 600 --max-definitions 3 --enable-rollback --verbose
+  only:
+    - master
